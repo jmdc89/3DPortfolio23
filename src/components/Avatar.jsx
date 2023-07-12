@@ -6,6 +6,7 @@ import * as THREE from "three";
 
 export function Avatar(props) {
 
+  const {animation} = props;
   const {headFollow, cursorFollow} = useControls({
     headFollow: false,
     cursorFollow: false,
@@ -27,7 +28,7 @@ export function Avatar(props) {
   fallingAnimation[0].name = "Falling";
 
   // Funcion  que carga la animacion
-  const {actions} = useAnimations(typingAnimation, group)
+  const {actions} = useAnimations([typingAnimation[0], standingAnimation[0], fallingAnimation[0]], group)
 
   useFrame((state) => {
     if (headFollow) {
@@ -41,8 +42,11 @@ export function Avatar(props) {
 
   // Ejecucion y reseteo de la animacion
   useEffect(() => {
-    actions["Typing"].reset().play();
-  }, [])
+    actions[animation].reset().play();
+    return () => {
+      actions[animation].reset().stop();
+    }
+  }, [animation])
 
   return (
     
