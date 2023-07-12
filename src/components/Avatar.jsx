@@ -17,10 +17,14 @@ export function Avatar(props) {
   const { nodes, materials } = useGLTF('models/avatar.glb')
 
   // Importa las animaciones del archivo 'Typing.fbx' usando la función useFBX
-  const {animations: typingAnimation } = useFBX("animations/Typing.fbx")
+  const {animations: typingAnimation } = useFBX("animations/Typing.fbx");
+  const {animations: standingAnimation } = useFBX("animations/Standing.fbx");
+  const {animations: fallingAnimation } = useFBX("animations/Falling.fbx");
 
   // Modifica la propiedad name
   typingAnimation[0].name = "Typing";
+  standingAnimation[0].name = "Standing";
+  fallingAnimation[0].name = "Falling";
 
   // Funcion  que carga la animacion
   const {actions} = useAnimations(typingAnimation, group)
