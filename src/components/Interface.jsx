@@ -13,9 +13,7 @@ export const Interface = () => {
     return (
     <div className="flex flex-col items-center w-screen">
         <AboutSection />
-        <Section>
-            <h1>Skills</h1>
-        </Section>
+        <SkillsSection />
         <Section>
             <h1>Projects</h1>
         </Section>
@@ -27,6 +25,71 @@ export const Interface = () => {
 };
 
 const AboutSection = () => {
+    return (
+    <Section>
+        <h1 className="text-6xl font-extrabold leading-snug">
+        Hi, I'm
+        <br />
+        <span className="px-1 italic">Jose Dominguez</span>
+      </h1>
+
+      <p className="text-lg text-gray-600 mt-4">
+        I am an architect, professor, computational designer and developer
+        <br />
+        Learn how to build 3D apps
+      </p>
+      <button className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}>
+        Contact me
+      </button>
+    </Section>
+    )
+}
+
+const skills = [
+    {
+        title: "Teaching",
+        level: 90,
+      },
+      {
+        title: "Rhinoceros3D & Grasshopper",
+        level: 90,
+      },
+      {
+        title: "Digital Fabrication",
+        level: 90,
+      },
+    {
+      title: "Threejs / React Three Fiber",
+      level: 70,
+    },
+    {
+      title: "React",
+      level: 70,
+    }, 
+    {
+        title: "Web Development",
+        level: 60,
+      }, 
+  ];
+
+  const languages = [
+    {
+      title: "Spanish",
+      level: 100,
+    },
+    {
+      title: "English",
+      level: 90,
+    },
+    {
+      title: "Portuguese",
+      level: 90,
+    },
+  ];
+
+
+
+const SkillsSection = () => {
     return (
     <Section>
         <h1 className="text-6xl font-extrabold leading-snug">
