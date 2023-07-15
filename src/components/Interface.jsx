@@ -50,14 +50,40 @@ const AboutSection = () => {
                 <span className="px-1 italic">Jose Dominguez</span>
             </h1>
 
-            <p className="text-lg text-gray-600 mt-4">
+            <motion.p className="text-lg text-gray-600 mt-4"
+                 initial={{
+                    opacity: 0,
+                    y: 25,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 1,
+                    delay: 1.5,
+                  }}
+            >
                 I am an architect, professor, computational designer and developer
                 <br />
                 Learn how to build 3D apps
-            </p>
-            <button className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}>
+            </motion.p>
+            <motion.button className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
+                 initial={{
+                    opacity: 0,
+                    y: 25,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 1,
+                    delay: 2,
+                  }}
+            >
                 Contact me
-            </button>
+            </motion.button>
         </Section>
     )
 }
