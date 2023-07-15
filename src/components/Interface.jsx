@@ -51,36 +51,36 @@ const AboutSection = () => {
             </h1>
 
             <motion.p className="text-lg text-gray-600 mt-4"
-                 initial={{
+                initial={{
                     opacity: 0,
                     y: 25,
-                  }}
-                  whileInView={{
+                }}
+                whileInView={{
                     opacity: 1,
                     y: 0,
-                  }}
-                  transition={{
+                }}
+                transition={{
                     duration: 1,
                     delay: 1.5,
-                  }}
+                }}
             >
                 I am an architect, professor, computational designer and developer
                 <br />
                 Learn how to build 3D apps
             </motion.p>
             <motion.button className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
-                 initial={{
+                initial={{
                     opacity: 0,
                     y: 25,
-                  }}
-                  whileInView={{
+                }}
+                whileInView={{
                     opacity: 1,
                     y: 0,
-                  }}
-                  transition={{
+                }}
+                transition={{
                     duration: 1,
                     delay: 2,
-                  }}
+                }}
             >
                 Contact me
             </motion.button>
@@ -134,24 +134,26 @@ const languages = [
 const SkillsSection = () => {
     return (
         <Section>
-            <div>
+            <motion.div whileInView={"visible"}>
                 <h2 className="text-5xl font-bold">Skills</h2>
                 <div className=" mt-8 space-y-4">
                     {skills.map((skill, index) => (
                         <div className="w-64" key={index}>
-                            <motion.h3 
+                            <motion.h3
                                 className="text-xl font-bold text-gray-800"
                                 initial={{
                                     opacity: 0,
                                 }}
-                                whileInView={{
-                                    opacity: 1,
+                                variants={{
+                                    visible: {
+                                        opacity: 1,
+                                        transition: {
+                                            duration: 1,
+                                            delay: 1 + index * 0.2,
+                                        },
+                                    },
                                 }}
-                                transition={{
-                                    duration: 1,
-                                    delay: 1 + index * 0.2,
-                                }}
-                            >{skill.title}                    
+                            >{skill.title}
                             </motion.h3>
                             <div className="h-2 w-full bg-orange-300 rounded-full mt-2">
                                 <motion.div
@@ -160,14 +162,16 @@ const SkillsSection = () => {
                                     initial={{
                                         scaleX: 0,
                                         originX: 0,
-                                      }}
-                                      whileInView={{
-                                        scaleX: 1,
-                                      }}
-                                      transition={{
-                                        duration: 1,
-                                        delay: 1 + index * 0.2,
-                                      }}
+                                    }}
+                                    variants={{
+                                        visible: {
+                                            scaleX: 1,
+                                            transition: {
+                                                duration: 1,
+                                                delay: 1 + index * 0.2,
+                                            },
+                                        },
+                                    }}
                                 />
                             </div>
                         </div>
@@ -189,7 +193,7 @@ const SkillsSection = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </Section>
     );
 };
