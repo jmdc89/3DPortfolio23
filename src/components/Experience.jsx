@@ -22,11 +22,12 @@ export const Experience = (props) => {
       <Environment preset="sunset" />
       <ambientLight intensity={1} />
       <motion.group 
-      position-y={-1} 
+      position-y={0}
+      position-z={2} 
       rotation-y={Math.PI/5}
-      animate={{
-        y: section === 0 ? 0 : -1,
-      }}
+      // animate={{
+      //   y: section === 0 ? 0 : -0.5,
+      // }}
       >
         <ContactShadows opacity={0.42} scale={10} blur={1} far={10} resolution={256} color="#000000" />
         <Avatar animation={animation} />
