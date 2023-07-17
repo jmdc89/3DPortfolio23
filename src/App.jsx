@@ -22,7 +22,7 @@ function App() {
       </Scroll>
       </ScrollControls>
     </Canvas>
-    <Menu onSectionChange={setSection} menuOpen={menuOpened} setMenuOpened={setMenuOpened}/>
+    <Menu onSectionChange={setSection} menuOpened={menuOpened} setMenuOpened={setMenuOpened}/>
     </>
   );
 }
