@@ -20,6 +20,7 @@ function App() {
       </Scroll>
       </ScrollControls>
     </Canvas>
+    <Menu onSectionChange={setSection}/>
     </>
   );
 }
