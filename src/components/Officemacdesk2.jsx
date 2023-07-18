@@ -5,18 +5,26 @@ Command: npx gltfjsx@6.1.4 public/models/officemacdesk2.glb
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import {motion} from "framer-motion-3d"
 
 export function Deskv(props) {
+  const {section} = props;
   const { nodes, materials } = useGLTF('models/officemacdesk2.glb')
   return (
     <group {...props} dispose={null}>
       <group scale={0.04} rotation-y={Math.PI} position-z={0.6} position-y={0.3} position-x={-0.2}>
-        <group position={[-5.85, 10.37, -16.3]} scale={0.05}>
+        <motion.group 
+            position={[-5.85, 10.37, -16.3]} 
+            scale={0.05}
+            animate={{
+              scale: section === 0 ? 0.05 : 0.01,
+            }}
+            >
           <mesh geometry={nodes.polySurface60_Display_Shader_0.geometry} material={materials.Display_Shader} />
           <mesh geometry={nodes.polySurface60_MonitorBlack_Shader_0.geometry} material={materials.MonitorBlack_Shader} />
           <mesh geometry={nodes.polySurface60_MonitorChrome_Shader_0.geometry} material={materials.MonitorChrome_Shader} />
           <mesh geometry={nodes.polySurface61_aiStandardSurface11_0.geometry} material={materials.aiStandardSurface11} />
-        </group>
+        </motion.group>
         <group position={[0, -5.25, 7.94]} scale={2.69}>
           <mesh geometry={nodes.polySurface1_lambert1_0.geometry} material={materials.lambert1} />
           <mesh geometry={nodes.polySurface1_TableCeramic_Shader_0.geometry} material={materials.TableCeramic_Shader} />
