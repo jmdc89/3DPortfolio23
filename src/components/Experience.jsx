@@ -65,7 +65,7 @@ export const Experience = (props) => {
       >
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
         <Float>
-          <mesh position={[1, -8, -15]} scale={[2, 2, 2]}>
+          <mesh position={[1, -5, -15]} scale={[2, 2, 2]}>
             <sphereGeometry />
             <MeshDistortMaterial
               opacity={0.8}
