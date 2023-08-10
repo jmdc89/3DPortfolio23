@@ -7,6 +7,7 @@ import { ScrollManager } from "./components/ScrollManager";
 import { Menu } from "./components/Menu";
 import { MotionConfig } from "framer-motion";
 import { Leva } from "leva";
+import { framerMotionConfig } from "./config";
 
 function App() {
   const [section, setSection] = useState(0);
@@ -19,11 +20,7 @@ function App() {
   return (
     <>
     <MotionConfig transition={{
-      type: "spring",
-      mass: 5,
-      stiffness: 100,
-      damping: 50,
-      restDelta: 0.0001,
+      ...framerMotionConfig,
     }}>
     <Canvas shadows camera={{ position: [0, 2, 5], fov: 40 }}>
       <color attach="background" args={["#e6e7ff"]} />
