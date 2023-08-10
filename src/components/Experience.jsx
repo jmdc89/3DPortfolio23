@@ -8,12 +8,27 @@ import { Avatar } from "./Avatar";
 import { useControls } from "leva";
 import { Deskv } from "./Officemacdesk2";
 import {motion} from "framer-motion-3d";
-import { useThree } from "@react-three/fiber";
-
+import { useThree, useFrame } from "@react-three/fiber";
+import { useMotionValue, animate } from "framer-motion";
+import { useEffect } from "react";
 
 export const Experience = (props) => {
-  const {section} = props;
+  const {section, menuOpened} = props;
   const {viewport} = useThree();
+
+  const cameraPositionX = useMotionValue();
+  const cameraLookAtX = useMotionValue();
+
+  useEffect(() => {
+    animate(cameraPositionX, menuOpened ? -5 : 0);
+    animate(cameraLookAtX, menuOpened ? 5 : 0);
+  },[menuOpened]);
+
+  useFrame((state) => {
+    state.camera.position.x = cameraPositionX.get();
+    state.camera.lookAt(cameraLookAtX.get(), 0, 0);
+  });
+
 
   const { animation } = useControls({
     animation: {
