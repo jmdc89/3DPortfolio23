@@ -44,12 +44,12 @@ export const Experience = (props) => {
         {animation === "Typing" && (
           <mesh scale={[0.8,0.5,0.8]} position-y={0.25}>
           <boxGeometry />
-          <meshStandardMaterial color="orange" />
+          <meshStandardMaterial color="blue" />
         </mesh>
         )}
         <mesh scale={5} rotation-x={-Math.PI * 0.5} position-y={-0.001}>
           <planeGeometry />
-          <meshStandardMaterial color="white" />
+          <meshStandardMaterial color="orange" />
         </mesh>
       </motion.group>
 
@@ -65,7 +65,7 @@ export const Experience = (props) => {
       >
         <directionalLight position={[-5, 3, 5]} intensity={0.4} />
         <Float>
-          <mesh position={[1, -3, -15]} scale={[2, 2, 2]}>
+          <mesh position={[1, -8, -15]} scale={[2, 2, 2]}>
             <sphereGeometry />
             <MeshDistortMaterial
               opacity={0.8}
@@ -77,7 +77,7 @@ export const Experience = (props) => {
           </mesh>
         </Float>
         <Float>
-          <mesh scale={[3, 3, 3]} position={[3, 1, -18]}>
+          <mesh scale={[3, 3, 3]} position={[5, -2, -18]}>
             <sphereGeometry />
             <MeshDistortMaterial
               opacity={0.8}
@@ -89,7 +89,7 @@ export const Experience = (props) => {
           </mesh>
         </Float>
         <Float>
-          <mesh scale={[1.4, 1.4, 1.4]} position={[-3, -1, -11]}>
+          <mesh scale={[1.4, 1.4, 1.4]} position={[-3, -3, -11]}>
             <boxGeometry />
             <MeshWobbleMaterial
               opacity={0.8}
