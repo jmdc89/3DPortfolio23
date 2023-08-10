@@ -11,6 +11,7 @@ import {motion} from "framer-motion-3d";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useMotionValue, animate } from "framer-motion";
 import { useEffect } from "react";
+import { framerMotionConfig } from "../config";
 
 export const Experience = (props) => {
   const {section, menuOpened} = props;
@@ -20,8 +21,12 @@ export const Experience = (props) => {
   const cameraLookAtX = useMotionValue();
 
   useEffect(() => {
-    animate(cameraPositionX, menuOpened ? -5 : 0);
-    animate(cameraLookAtX, menuOpened ? 5 : 0);
+    animate(cameraPositionX, menuOpened ? -5 : 0, {
+      ...framerMotionConfig,
+    });
+    animate(cameraLookAtX, menuOpened ? 5 : 0, {
+      ...framerMotionConfig,
+    });
   },[menuOpened]);
 
   useFrame((state) => {
