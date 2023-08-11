@@ -56,6 +56,11 @@ export const Experience = (props) => {
       //   y: section === 0 ? 0 : -0.5,
       // }}
       >
+        <group name="Empty" position={[-0.07, -0.08, 0.14]} rotation={[-Math.PI, 0.04, -Math.PI]} scale={0.25}>
+        <group scale={[1.5, 1.5, 1.5]} position-y={-1.5}>
+          <Avatar animation={section === 0 ? "Falling" : "Standing"} />
+        </group>
+        </group>
         <ContactShadows opacity={0.42} scale={10} blur={1} far={10} resolution={256} color="#000000" />
         <Avatar animation={animation} />
         {animation === "Typing" && (
@@ -120,9 +125,6 @@ export const Experience = (props) => {
             />
           </mesh>
         </Float>
-        <group scale={[1.5, 1.5, 1.5]} position-y={-1.5}>
-          <Avatar animation={section === 0 ? "Falling" : "Standing"} />
-        </group>
       </motion.group>
     </>
   );
