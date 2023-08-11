@@ -7,15 +7,16 @@ import {
 import { Avatar } from "./Avatar";
 import { useControls } from "leva";
 import { Deskv } from "./Officemacdesk2";
-import {motion} from "framer-motion-3d";
+import { motion } from "framer-motion-3d";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useMotionValue, animate } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { framerMotionConfig } from "../config";
+import * as THREE from "three";
 
 export const Experience = (props) => {
-  const {section, menuOpened} = props;
-  const {viewport} = useThree();
+  const { section, menuOpened } = props;
+  const { viewport } = useThree();
 
   const cameraPositionX = useMotionValue();
   const cameraLookAtX = useMotionValue();
@@ -27,11 +28,17 @@ export const Experience = (props) => {
     animate(cameraLookAtX, menuOpened ? 5 : 0, {
       ...framerMotionConfig,
     });
-  },[menuOpened]);
+  }, [menuOpened]);
+
+  const characterContainerAboutRef = useRef();
 
   useFrame((state) => {
     state.camera.position.x = cameraPositionX.get();
     state.camera.lookAt(cameraLookAtX.get(), 0, 0);
+
+    // const position = new THREE.Vector3();
+    // characterContainerAboutRef.current.getWorldPosition(position);
+    // console.log([position.x, position.y, position.z])
   });
 
 
@@ -45,32 +52,37 @@ export const Experience = (props) => {
 
   return (
     <>
+      <motion.group position={[0.025658745714699907, -0.08, 2.154407346872966]}>
+        <Avatar animation={section === 0 ? "Falling" : "Standing"} />
+      </motion.group>
+
+
       {/* <Sky /> */}
       <Environment preset="sunset" />
       <ambientLight intensity={1} />
-      <motion.group 
-      position-y={0}
-      position-z={2} 
-      rotation-y={Math.PI/5}
+      <motion.group
+        position-y={0}
+        position-z={2}
+        rotation-y={Math.PI / 5}
       // animate={{
       //   y: section === 0 ? 0 : -0.5,
       // }}
       >
-        <group name="Empty" position={[-0.07, -0.08, 0.14]} rotation={[-Math.PI, 0.04, -Math.PI]} scale={0.25}>
-        <group scale={[1.5, 1.5, 1.5]} position-y={-1.5}>
-          <Avatar animation={section === 0 ? "Falling" : "Standing"} />
-        </group>
+        <group ref={characterContainerAboutRef}  name="Empty" position={[-0.07, -0.08, 0.14]} rotation={[-Math.PI, 0.04, -Math.PI]} scale={0.25}>
+          {/* <group scale={[1.5, 1.5, 1.5]} position-y={-1.5}>
+            <Avatar animation={section === 0 ? "Falling" : "Standing"} />
+          </group> */}
         </group>
         <ContactShadows opacity={0.42} scale={10} blur={1} far={10} resolution={256} color="#000000" />
         <Avatar animation={animation} />
         {animation === "Typing" && (
-          < Deskv section={section}/>
+          < Deskv section={section} />
         )}
         {animation === "Typing" && (
-          <mesh scale={[0.8,0.5,0.8]} position-y={0.25}>
-          <boxGeometry />
-          <meshStandardMaterial color="blue" />
-        </mesh>
+          <mesh scale={[0.8, 0.5, 0.8]} position-y={0.25}>
+            <boxGeometry />
+            <meshStandardMaterial color="blue" />
+          </mesh>
         )}
         <mesh scale={5} rotation-x={-Math.PI * 0.5} position-y={-0.001}>
           <planeGeometry />
