@@ -13,6 +13,7 @@ import { useMotionValue, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { framerMotionConfig } from "../config";
 import * as THREE from "three";
+import { Projects } from "./Projects";
 
 export const Experience = (props) => {
   const {menuOpened } = props;
@@ -214,6 +215,7 @@ export const Experience = (props) => {
           </mesh>
         </Float>
       </motion.group>
+      <Projects />
     </>
   );
 };
