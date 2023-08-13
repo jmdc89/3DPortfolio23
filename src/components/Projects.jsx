@@ -1,3 +1,6 @@
+import { useThree } from "@react-three/fiber";
+import {motion } from "framer-motion-3d";
+
 export const projects = [
     {
       title: "Netflix clone",
@@ -33,5 +36,14 @@ export const projects = [
   
 
 export const Projects = () => {
-    return <group></group>;
+    return <group position-y={-viewport.height * 2 + 1}>
+      {
+        projects.map((project,index) => (
+          <motion.group>
+            <Project />
+          </motion.group>
+        ))
+      }
+
+    </group>;
 };
