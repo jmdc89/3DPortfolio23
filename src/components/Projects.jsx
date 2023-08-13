@@ -3,7 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { animate, useMotionValue } from "framer-motion";
 
 import { motion } from "framer-motion-3d";
-// import { atom, useAtom } from "jotai";
+import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 
 export const projects = [
@@ -90,19 +90,22 @@ export const projects = [
       </group>
     );
   };
+
+  export const currentProjectAtom = atom(Math.floor(projects.length / 2));
   
   
 export const Projects = () => {
   const { viewport } = useThree();
+  const [currentProject] = useAtom(currentProjectAtom);
 
-    return <group position-y={-viewport.height * 2 - 1.5}>
+    return <group position-y={-viewport.height * 2}>
       {
         projects.map((project,index) => (
           <motion.group 
             key={"project_" + index}
             position={[index * 2.5, 0, -3]}
           >
-            <Project project={project}/>
+            <Project project={project} highlighted={index === currentProject}/>
           </motion.group>
         ))
       }

@@ -98,8 +98,8 @@ export const Experience = (props) => {
              rotateZ: 0,
            },
            2: {
-             x: -1,
-             y: -viewport.height * 2 - 1,
+             x: -2,
+             y: -viewport.height * 2,
              z: 0,
              rotateX: 0,
              rotateY: Math.PI / 2,
