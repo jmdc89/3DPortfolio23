@@ -20,7 +20,7 @@ export const projects = [
       description: "This is a small primer on how to use GLTF models on the web",
     },
     {
-      title: "React Micro projects",
+      title: "Micro projects",
       url: "https://react-microprojects.netlify.app/",
       image: "projects/microProjects.JPG",
       description: "Microprojects developed using React",
@@ -94,21 +94,27 @@ export const projects = [
   export const currentProjectAtom = atom(Math.floor(projects.length / 2));
   
   
-export const Projects = () => {
-  const { viewport } = useThree();
-  const [currentProject] = useAtom(currentProjectAtom);
-
-    return <group position-y={-viewport.height * 2}>
-      {
-        projects.map((project,index) => (
-          <motion.group 
+  export const Projects = () => {
+    const { viewport } = useThree();
+    const [currentProject] = useAtom(currentProjectAtom);
+  
+    return (
+      <group position-y={-viewport.height * 2}>
+        {projects.map((project, index) => (
+          <motion.group
             key={"project_" + index}
             position={[index * 2.5, 0, -3]}
+            animate={{
+              x: 0 + (index - currentProject) * 2.5,
+              y: currentProject === index ? 0 : -0.1,
+              z: currentProject === index ? -2 : -3,
+              rotateX: currentProject === index ? 0 : -Math.PI / 3,
+              rotateZ: currentProject === index ? 0 : -0.1 * Math.PI,
+            }}
           >
-            <Project project={project} highlighted={index === currentProject}/>
+            <Project project={project} highlighted={index === currentProject} />
           </motion.group>
-        ))
-      }
-
-    </group>;
-};
+        ))}
+      </group>
+    );
+  };
